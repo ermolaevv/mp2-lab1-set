@@ -70,7 +70,7 @@ void TBitField::SetBit(const int n) // установить бит
         throw "Wrong index";
 
     const size_t index = GetMemIndex(n);
-    pMem[index] = (pMem[index] | GetMemMask(n));
+    pMem[index] |= GetMemMask(n);
 }
 
 void TBitField::ClrBit(const int n) // очистить бит
@@ -80,7 +80,7 @@ void TBitField::ClrBit(const int n) // очистить бит
 
 
     const size_t index = GetMemIndex(n);
-    pMem[index] = (pMem[index] & (~GetMemMask(n)));
+    pMem[index] &= ~(GetMemMask(n));
 }
 
 int TBitField::GetBit(const int n) const // получить значение бита

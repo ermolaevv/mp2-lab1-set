@@ -87,27 +87,33 @@ int TSet::operator!=(const TSet &s) const // сравнение
 
 TSet TSet::operator+(const TSet &s) // объединение
 {
-    return FAKE_SET;
+    TSet tmp(s.BitField);
+    return tmp.BitField | this->BitField;
 }
 
 TSet TSet::operator+(const int Elem) // объединение с элементом
 {
-    return FAKE_SET;
+    TSet tmp(*this);
+    tmp.InsElem(Elem);
+    return tmp;
 }
 
 TSet TSet::operator-(const int Elem) // разность с элементом
 {
-    return FAKE_SET;
+    TSet tmp(*this);
+    tmp.InsElem(Elem);
+    return tmp;
 }
 
 TSet TSet::operator*(const TSet &s) // пересечение
 {
-    return FAKE_SET;
+    TSet tmp(s.BitField);
+    return tmp.BitField & this->BitField;
 }
 
 TSet TSet::operator~(void) // дополнение
 {
-    return FAKE_SET;
+    return TSet(~this->BitField);
 }
 
 // перегрузка ввода/вывода
